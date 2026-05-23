@@ -6,6 +6,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from app.database import Base, engine
 from app.models import work_request
+from app.routers.dashboard_router import router as dashboard_router
 from app.routers.work_request_router import router as work_request_router
 
 
@@ -26,6 +27,7 @@ app = FastAPI(
 )
 
 app.include_router(work_request_router)
+app.include_router(dashboard_router)
 
 
 @app.get("/", tags=["Health"])

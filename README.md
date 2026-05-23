@@ -14,6 +14,7 @@ FastAPI 기반 사내 업무 요청 자동화 API입니다.
 - 상태별 조회
 - 요청 상태 변경
 - Swagger 기반 API 문서화
+- 간단한 내부 업무 요청 관리 화면
 - MySQL 연동
 
 ## Tech Stack
@@ -41,6 +42,7 @@ workflow-automation-api/
 │   ├── services/
 │   │   └── work_request_service.py
 │   └── routers/
+│       ├── dashboard_router.py
 │       └── work_request_router.py
 ├── sql/
 │   └── schema.sql
@@ -79,6 +81,7 @@ uvicorn app.main:app --reload
 
 - API Health Check: `http://localhost:8000/`
 - Swagger UI: `http://localhost:8000/docs`
+- Dashboard: `http://localhost:8000/dashboard`
 
 Swagger 문서는 서버만 실행되면 확인할 수 있습니다.  
 업무 요청 등록/조회 API를 실제로 호출하려면 MySQL 실행, DB 생성, `.env` 비밀번호 설정이 필요합니다.
@@ -174,6 +177,9 @@ IN_PROGRESS -> REJECTED
 
 3. Swagger 기반 API 문서화  
    FastAPI 자동 문서화를 활용해 API 테스트와 협업 가능성을 확보했습니다.
+
+4. 간단한 Dashboard 화면 제공  
+   현업 담당자가 업무 요청 등록, 목록 조회, 부서/상태 필터링, 상태 변경 흐름을 한 화면에서 확인할 수 있도록 구성했습니다.
 
 ## Portfolio Summary
 
