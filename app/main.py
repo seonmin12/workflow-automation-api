@@ -2,6 +2,7 @@ from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from sqlalchemy.exc import SQLAlchemyError
 
 from app.database import Base, engine
 from app.models import work_request
@@ -10,7 +11,10 @@ from app.routers.work_request_router import router as work_request_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
-    Base.metadata.create_all(bind=engine)
+    try:
+        Base.metadata.create_all(bind=engine)
+    except SQLAlchemyError as exc:
+        print(f"Database startup check skipped: {exc}")
     yield
 
 

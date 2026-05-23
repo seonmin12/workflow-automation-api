@@ -80,6 +80,9 @@ uvicorn app.main:app --reload
 - API Health Check: `http://localhost:8000/`
 - Swagger UI: `http://localhost:8000/docs`
 
+Swagger 문서는 서버만 실행되면 확인할 수 있습니다.  
+업무 요청 등록/조회 API를 실제로 호출하려면 MySQL 실행, DB 생성, `.env` 비밀번호 설정이 필요합니다.
+
 ## API
 
 ### 업무 요청 등록
