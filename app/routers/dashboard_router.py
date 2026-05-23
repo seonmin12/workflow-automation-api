@@ -310,7 +310,8 @@ def read_dashboard() -> str:
       border-radius: 6px;
       background: #fff;
       color: var(--danger);
-      padding: 0 10px;
+      padding: 0 6px;
+      white-space: nowrap;
       font-weight: 800;
     }
 
@@ -467,13 +468,13 @@ def read_dashboard() -> str:
           <table>
             <colgroup>
               <col style="width: 4%">
-              <col style="width: 31%">
-              <col style="width: 13%">
-              <col style="width: 14%">
-              <col style="width: 10%">
+              <col style="width: 30%">
               <col style="width: 12%">
+              <col style="width: 13%">
+              <col style="width: 9%">
               <col style="width: 11%">
-              <col style="width: 5%">
+              <col style="width: 13%">
+              <col style="width: 8%">
             </colgroup>
             <thead>
               <tr>
