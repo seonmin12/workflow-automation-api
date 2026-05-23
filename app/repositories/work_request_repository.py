@@ -5,6 +5,7 @@ from app.schemas.work_request_schema import (
     Department,
     RequestStatus,
     WorkRequestCreate,
+    WorkRequestUpdate,
 )
 
 
@@ -52,3 +53,23 @@ def update_work_request_status(
     db.commit()
     db.refresh(work_request)
     return work_request
+
+
+def update_work_request(
+    db: Session,
+    work_request: WorkRequest,
+    request: WorkRequestUpdate,
+) -> WorkRequest:
+    work_request.title = request.title
+    work_request.description = request.description
+    work_request.requester = request.requester
+    work_request.department = request.department.value
+    work_request.priority = request.priority.value
+    db.commit()
+    db.refresh(work_request)
+    return work_request
+
+
+def delete_work_request(db: Session, work_request: WorkRequest) -> None:
+    db.delete(work_request)
+    db.commit()

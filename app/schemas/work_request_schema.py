@@ -34,6 +34,14 @@ class WorkRequestCreate(BaseModel):
     priority: Priority
 
 
+class WorkRequestUpdate(BaseModel):
+    title: str = Field(..., min_length=1, max_length=255)
+    description: str = Field(..., min_length=1)
+    requester: str = Field(..., min_length=1, max_length=100)
+    department: Department
+    priority: Priority
+
+
 class WorkRequestStatusUpdate(BaseModel):
     status: RequestStatus
 

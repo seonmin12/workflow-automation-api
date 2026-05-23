@@ -298,6 +298,20 @@ def read_dashboard() -> str:
       padding: 6px 8px;
     }
 
+    .delete-button {
+      min-height: 36px;
+      border: 1px solid #fecaca;
+      border-radius: 6px;
+      background: #fff;
+      color: var(--danger);
+      padding: 0 10px;
+      font-weight: 800;
+    }
+
+    .delete-button:hover {
+      background: #fff0ee;
+    }
+
     .empty,
     .message {
       padding: 18px;
@@ -446,6 +460,7 @@ def read_dashboard() -> str:
                 <th>Priority</th>
                 <th>Status</th>
                 <th>Change Status</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody id="request-table"></tbody>
@@ -524,6 +539,11 @@ def read_dashboard() -> str:
                 ${options}
               </select>
             </td>
+            <td>
+              <button class="delete-button" type="button" data-id="${item.id}">
+                Delete
+              </button>
+            </td>
           </tr>
         `;
       }).join("");
@@ -543,6 +563,10 @@ def read_dashboard() -> str:
       if (!response.ok) {
         const errorBody = await response.json().catch(() => ({}));
         throw new Error(errorBody.detail || `Request failed: ${response.status}`);
+      }
+
+      if (response.status === 204) {
+        return null;
       }
 
       return response.json();
@@ -595,6 +619,23 @@ def read_dashboard() -> str:
       } catch (error) {
         showMessage(listMessage, error.message, "error");
         await loadRequests();
+      }
+    });
+
+    requestTable.addEventListener("click", async (event) => {
+      if (!event.target.matches(".delete-button")) {
+        return;
+      }
+
+      const requestId = event.target.dataset.id;
+
+      try {
+        await fetchJson(`/api/requests/${requestId}`, {
+          method: "DELETE",
+        });
+        await loadRequests();
+      } catch (error) {
+        showMessage(listMessage, error.message, "error");
       }
     });
 

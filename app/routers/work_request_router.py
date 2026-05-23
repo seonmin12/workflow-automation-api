@@ -8,6 +8,7 @@ from app.schemas.work_request_schema import (
     WorkRequestCreate,
     WorkRequestResponse,
     WorkRequestStatusUpdate,
+    WorkRequestUpdate,
 )
 from app.services import work_request_service
 
@@ -43,6 +44,15 @@ def get_work_request(
     return work_request_service.get_request(db, request_id)
 
 
+@router.put("/{request_id}", response_model=WorkRequestResponse)
+def update_work_request(
+    request_id: int,
+    request: WorkRequestUpdate,
+    db: Session = Depends(get_db),
+) -> WorkRequestResponse:
+    return work_request_service.update_request(db, request_id, request)
+
+
 @router.patch("/{request_id}/status", response_model=WorkRequestResponse)
 def update_work_request_status(
     request_id: int,
@@ -50,3 +60,11 @@ def update_work_request_status(
     db: Session = Depends(get_db),
 ) -> WorkRequestResponse:
     return work_request_service.update_status(db, request_id, request.status)
+
+
+@router.delete("/{request_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_work_request(
+    request_id: int,
+    db: Session = Depends(get_db),
+) -> None:
+    work_request_service.delete_request(db, request_id)

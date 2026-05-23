@@ -7,6 +7,7 @@ from app.schemas.work_request_schema import (
     Department,
     RequestStatus,
     WorkRequestCreate,
+    WorkRequestUpdate,
 )
 
 ALLOWED_STATUS_TRANSITIONS = {
@@ -65,3 +66,17 @@ def update_status(
         work_request,
         new_status,
     )
+
+
+def update_request(
+    db: Session,
+    request_id: int,
+    request: WorkRequestUpdate,
+) -> WorkRequest:
+    work_request = get_request(db, request_id)
+    return work_request_repository.update_work_request(db, work_request, request)
+
+
+def delete_request(db: Session, request_id: int) -> None:
+    work_request = get_request(db, request_id)
+    work_request_repository.delete_work_request(db, work_request)

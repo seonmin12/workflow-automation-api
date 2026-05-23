@@ -13,6 +13,7 @@ FastAPI 기반 사내 업무 요청 자동화 API입니다.
 - 부서별 조회
 - 상태별 조회
 - 요청 상태 변경
+- 업무 요청 수정 및 삭제
 - Swagger 기반 API 문서화
 - 간단한 내부 업무 요청 관리 화면
 - MySQL 연동
@@ -116,6 +117,22 @@ GET /api/requests
 GET /api/requests/{request_id}
 ```
 
+### 업무 요청 수정
+
+```http
+PUT /api/requests/{request_id}
+```
+
+```json
+{
+  "title": "광고 성과 리포트 자동 생성 요청 수정",
+  "description": "매주 월요일 반복되는 리포트 작성 업무를 자동화합니다.",
+  "requester": "marketing_team",
+  "department": "MARKETING",
+  "priority": "URGENT"
+}
+```
+
 ### 부서/상태 필터링
 
 ```http
@@ -132,6 +149,12 @@ PATCH /api/requests/{request_id}/status
 {
   "status": "IN_PROGRESS"
 }
+```
+
+### 업무 요청 삭제
+
+```http
+DELETE /api/requests/{request_id}
 ```
 
 ## Domain Rules
@@ -189,7 +212,7 @@ IN_PROGRESS -> REJECTED
 
 ### Solution
 
-FastAPI 기반 업무 요청 자동화 API를 설계하여 요청 등록, 상태 변경, 부서/상태별 조회 기능을 구현했습니다. 요청 상태를 Enum으로 관리하고, Pydantic Schema를 활용해 요청/응답 모델을 분리했습니다.
+FastAPI 기반 업무 요청 자동화 API를 설계하여 요청 등록, 수정, 삭제, 상태 변경, 부서/상태별 조회 기능을 구현했습니다. 요청 상태를 Enum으로 관리하고, Pydantic Schema를 활용해 요청/응답 모델을 분리했습니다.
 
 ### Outcome
 
