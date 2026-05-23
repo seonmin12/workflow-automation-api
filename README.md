@@ -1,12 +1,15 @@
-# WorkFlow Automation API
+# Workflow Automation API
 
-FastAPI 기반 사내 업무 요청 자동화 API입니다.  
+> FastAPI를 활용해 사내 반복 업무 요청을 등록, 조회, 상태 관리할 수 있도록 구현한 내부 운영 시스템 미니 프로젝트입니다.
+
 마케팅/운영 조직에서 반복적으로 발생하는 업무 요청을 등록하고, 담당 부서와 처리 상태에 따라 조회 및 관리할 수 있도록 설계했습니다.
-본 프로젝트는 Python 백엔드 프레임워크인 FastAPI의 구조를 이해하고, RESTful API 설계, MySQL 연동, Swagger 문서화, 계층 분리 구조를 학습하기 위해 진행한 미니 프로젝트입니다.
+본 프로젝트는 Python 백엔드 프레임워크인 FastAPI의 구조를 이해하고, RESTful API 설계, MySQL 연동, Swagger 문서화, 계층 분리 구조를 학습하기 위해 진행했습니다.
 
 ## Overview
 
 메신저, 문서, 구두 요청으로 분산되기 쉬운 반복 업무 요청을 하나의 API 흐름으로 구조화한 내부 운영 시스템 컨셉의 프로젝트입니다.
+
+### 주요 기능
 
 - 업무 요청 등록
 - 업무 요청 목록 및 상세 조회
@@ -26,6 +29,7 @@ FastAPI 기반 사내 업무 요청 자동화 API입니다.
 - SQLAlchemy
 - Pydantic
 - Swagger UI
+- HTML/CSS/JavaScript
 
 ## Project Structure
 
@@ -220,6 +224,7 @@ FastAPI 기반 업무 요청 자동화 API를 설계하여 요청 등록, 수정
 
 ## AI Usage
 
-- AI 도구는 코드 초안 생성과 오류 해결에 활용했습니다.
+- 본 프로젝트는 FastAPI 학습 및 구현 속도 향상을 위해 AI 도구를 보조적으로 활용했습니다.
+- AI 도구는 코드 초안 생성, 오류 원인 파악, 문법 확인에 활용했습니다.
 - API 구조, 데이터 모델, 상태값, 예외 케이스는 직접 설계하고 검토했습니다.
-- 생성된 코드를 실행 및 수정하며 FastAPI 백엔드 구조를 학습했습니다.
+- 생성된 코드에 대해 직접 실행, 수정, 테스트를 반복하며 FastAPI의 Router-Service-Repository 구조와 요청/응답 흐름을 학습했습니다.

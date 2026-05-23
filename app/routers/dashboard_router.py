@@ -12,7 +12,7 @@ def read_dashboard() -> str:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WorkFlow Automation Dashboard</title>
+  <title>Workflow Automation Dashboard</title>
   <style>
     :root {
       color-scheme: light;
@@ -61,7 +61,7 @@ def read_dashboard() -> str:
 
     .topbar-inner,
     .page {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1440px, calc(100% - 40px));
       margin: 0 auto;
     }
 
@@ -227,7 +227,8 @@ def read_dashboard() -> str:
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 840px;
+      table-layout: fixed;
+      min-width: 1180px;
     }
 
     th,
@@ -247,14 +248,18 @@ def read_dashboard() -> str:
     }
 
     .title-cell {
-      max-width: 280px;
+      min-width: 360px;
       font-weight: 750;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .description {
       margin-top: 4px;
       color: var(--muted);
       font-size: 13px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .badge {
@@ -342,7 +347,7 @@ def read_dashboard() -> str:
 
       .topbar-inner,
       .page {
-        width: min(100% - 24px, 1180px);
+        width: min(100% - 24px, 1440px);
       }
     }
 
@@ -367,8 +372,8 @@ def read_dashboard() -> str:
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        <strong>WorkFlow Automation API</strong>
-        <span>Internal work request management</span>
+        <strong>Workflow Automation API</strong>
+        <span>Internal automation request management</span>
       </div>
       <a class="nav-link" href="/docs">Swagger Docs</a>
     </div>
@@ -377,7 +382,7 @@ def read_dashboard() -> str:
   <main class="page">
     <section class="panel" aria-labelledby="create-title">
       <div class="panel-header">
-        <h1 id="create-title">Create Request</h1>
+        <h1 id="create-title">Create Automation Request</h1>
       </div>
       <form class="form" id="request-form">
         <div class="field">
@@ -423,7 +428,7 @@ def read_dashboard() -> str:
     <section class="content">
       <section class="panel" aria-labelledby="list-title">
         <div class="panel-header">
-          <h2 id="list-title">Request List</h2>
+          <h2 id="list-title">Automation Request List</h2>
           <button class="button secondary" id="refresh-button" type="button">Refresh</button>
         </div>
         <div class="filters">
@@ -451,6 +456,16 @@ def read_dashboard() -> str:
         </div>
         <div class="table-wrap">
           <table>
+            <colgroup>
+              <col style="width: 56px">
+              <col style="width: 380px">
+              <col style="width: 150px">
+              <col style="width: 170px">
+              <col style="width: 130px">
+              <col style="width: 150px">
+              <col style="width: 190px">
+              <col style="width: 110px">
+            </colgroup>
             <thead>
               <tr>
                 <th>ID</th>
