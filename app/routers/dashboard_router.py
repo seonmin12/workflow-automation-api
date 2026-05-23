@@ -61,7 +61,7 @@ def read_dashboard() -> str:
 
     .topbar-inner,
     .page {
-      width: min(1440px, calc(100% - 40px));
+      width: calc(100% - 48px);
       margin: 0 auto;
     }
 
@@ -99,7 +99,7 @@ def read_dashboard() -> str:
 
     .page {
       display: grid;
-      grid-template-columns: 360px minmax(0, 1fr);
+      grid-template-columns: 320px minmax(0, 1fr);
       gap: 18px;
       padding: 24px 0;
     }
@@ -221,19 +221,19 @@ def read_dashboard() -> str:
     }
 
     .table-wrap {
-      overflow-x: auto;
+      overflow-x: visible;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       table-layout: fixed;
-      min-width: 1180px;
+      min-width: 0;
     }
 
     th,
     td {
-      padding: 12px 14px;
+      padding: 11px 12px;
       border-top: 1px solid var(--border);
       text-align: left;
       vertical-align: top;
@@ -248,7 +248,6 @@ def read_dashboard() -> str:
     }
 
     .title-cell {
-      min-width: 360px;
       font-weight: 750;
       word-break: keep-all;
       overflow-wrap: break-word;
@@ -296,7 +295,8 @@ def read_dashboard() -> str:
     }
 
     .status-select {
-      width: 150px;
+      width: 100%;
+      min-width: 0;
       min-height: 36px;
       border: 1px solid var(--border);
       border-radius: 6px;
@@ -304,6 +304,7 @@ def read_dashboard() -> str:
     }
 
     .delete-button {
+      width: 100%;
       min-height: 36px;
       border: 1px solid #fecaca;
       border-radius: 6px;
@@ -348,6 +349,14 @@ def read_dashboard() -> str:
       .topbar-inner,
       .page {
         width: min(100% - 24px, 1440px);
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      table {
+        min-width: 920px;
       }
     }
 
@@ -457,14 +466,14 @@ def read_dashboard() -> str:
         <div class="table-wrap">
           <table>
             <colgroup>
-              <col style="width: 56px">
-              <col style="width: 380px">
-              <col style="width: 150px">
-              <col style="width: 170px">
-              <col style="width: 130px">
-              <col style="width: 150px">
-              <col style="width: 190px">
-              <col style="width: 110px">
+              <col style="width: 4%">
+              <col style="width: 31%">
+              <col style="width: 13%">
+              <col style="width: 14%">
+              <col style="width: 10%">
+              <col style="width: 12%">
+              <col style="width: 11%">
+              <col style="width: 5%">
             </colgroup>
             <thead>
               <tr>
